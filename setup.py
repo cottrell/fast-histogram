@@ -8,10 +8,16 @@ extensions = [Extension("fast_histogram._histogram_core",
                        [os.path.join('fast_histogram', '_histogram_core.c')],
                        include_dirs=[np.get_include()])]
 
+long_description = 'nope'
+try:
+      long_description = open('README.rst').read()
+except Exception as e:
+    print('no long_description because of encoding errors: {}'.format(e))
+
 setup(name='fast-histogram',
       version='0.3.dev0',
       description='Fast simple 1D and 2D histograms',
-      long_description=open('README.rst').read(),
+      long_description=long_description,
       install_requires=['numpy'],
       author='Thomas Robitaille',
       author_email='thomas.robitaille@gmail.com',
